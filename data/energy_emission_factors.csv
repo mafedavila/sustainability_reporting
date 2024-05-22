@@ -1,0 +1,13 @@
+energy_id,energy_source,renewable,emission_factor_gCO2e_per_kWh
+1,Biomass,TRUE,27
+2,Hydropower,TRUE,2.6
+3,Offshore Wind,TRUE,9.3
+4,Onshore Wind,TRUE,16.9
+5,Photovoltaic (Solar Power),TRUE,55.7
+6,Other Renewables,TRUE,10
+7,Nuclear Energy,FALSE,12
+8,Lignite (Brown Coal),FALSE,347
+9,Hard Coal,FALSE,303.9
+10,Natural Gas,FALSE,182.34
+11,Pumped Storage,TRUE,4
+12,Other Conventional,FALSE,300

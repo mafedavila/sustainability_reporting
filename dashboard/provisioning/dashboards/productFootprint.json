@@ -1,0 +1,1420 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": false,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Emissions [massCO2eq.]",
+            "axisPlacement": "auto",
+            "fillOpacity": 67,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ordernumber"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              },
+              {
+                "id": "unit",
+                "value": "string"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "productserial"
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    TO_CHAR(o.startdate, 'YYYY-MM-DD') AS date, \n    o.ordernumber::text AS ordernumber, \n    pf.productserial,\n    SUM(pf.energyemission + pf.materialemission + pf.transportemission) AS total_emission\nFROM \n    product_footprint pf\nJOIN \n    \"order\" o ON pf.ordernumber = o.ordernumber\nGROUP BY \n    TO_CHAR(o.startdate, 'YYYY-MM-DD'), o.ordernumber, o.productid, pf.productserial\nORDER BY \n    TO_CHAR(o.startdate, 'YYYY-MM-DD'), o.ordernumber, o.productid, pf.productserial;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Company Emissions per Day",
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 3,
+        "x": 8,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "displayLabels": [
+          "name",
+          "value"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    'Renewables' AS category,\n    SUM(\n        es.mwh * (\n            CASE \n                WHEN es.sourcename IN ('Biomass', 'Hydropower', 'Wind Offshore', 'Wind Onshore', 'Photovoltaic', 'Other Renewables') \n                THEN 1 \n                ELSE 0 \n            END\n        )\n    ) / (SELECT SUM(mwh) FROM (\n        SELECT \n            SUM(biomasse_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wasserkraft_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wind_offshore_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wind_onshore_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(photovoltaik_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(sonstige_erneuerbare_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(kernenergie_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(braunkohle_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(steinkohle_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(erdgas_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(pumpspeicher_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(sonstige_konventionelle_mwh) AS mwh\n        FROM \n            energy_smard\n    ) AS total_energy) * 100 AS percentage\nFROM \n    (\n        SELECT 'Biomass' AS sourcename, SUM(biomasse_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Hydropower' AS sourcename, SUM(wasserkraft_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Wind Offshore' AS sourcename, SUM(wind_offshore_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Wind Onshore' AS sourcename, SUM(wind_onshore_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Photovoltaic' AS sourcename, SUM(photovoltaik_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Other Renewables' AS sourcename, SUM(sonstige_erneuerbare_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Nuclear Energy' AS sourcename, SUM(kernenergie_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Lignite' AS sourcename, SUM(braunkohle_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Hard Coal' AS sourcename, SUM(steinkohle_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Natural Gas' AS sourcename, SUM(erdgas_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Pumped Storage' AS sourcename, SUM(pumpspeicher_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Other Conventional' AS sourcename, SUM(sonstige_konventionelle_mwh) AS mwh FROM energy_smard\n    ) es\nUNION ALL\nSELECT \n    'Conventional' AS category,\n    SUM(\n        es.mwh * (\n            CASE \n                WHEN es.sourcename NOT IN ('Biomass', 'Hydropower', 'Wind Offshore', 'Wind Onshore', 'Photovoltaic', 'Other Renewables') \n                THEN 1 \n                ELSE 0 \n            END\n        )\n    ) / (SELECT SUM(mwh) FROM (\n        SELECT \n            SUM(biomasse_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wasserkraft_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wind_offshore_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wind_onshore_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(photovoltaik_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(sonstige_erneuerbare_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(kernenergie_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(braunkohle_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(steinkohle_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(erdgas_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(pumpspeicher_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(sonstige_konventionelle_mwh) AS mwh\n        FROM \n            energy_smard\n    ) AS total_energy) * 100 AS percentage\nFROM \n    (\n        SELECT 'Biomass' AS sourcename, SUM(biomasse_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Hydropower' AS sourcename, SUM(wasserkraft_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Wind Offshore' AS sourcename, SUM(wind_offshore_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Wind Onshore' AS sourcename, SUM(wind_onshore_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Photovoltaic' AS sourcename, SUM(photovoltaik_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Other Renewables' AS sourcename, SUM(sonstige_erneuerbare_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Nuclear Energy' AS sourcename, SUM(kernenergie_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Lignite' AS sourcename, SUM(braunkohle_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Hard Coal' AS sourcename, SUM(steinkohle_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Natural Gas' AS sourcename, SUM(erdgas_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Pumped Storage' AS sourcename, SUM(pumpspeicher_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Other Conventional' AS sourcename, SUM(sonstige_konventionelle_mwh) AS mwh FROM energy_smard\n    ) es;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Energy Mix per Source",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 11,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    es.sourcename,\n    SUM(es.mwh) / (SELECT SUM(mwh) FROM (\n        SELECT \n            SUM(biomasse_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wasserkraft_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wind_offshore_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(wind_onshore_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(photovoltaik_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(sonstige_erneuerbare_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(kernenergie_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(braunkohle_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(steinkohle_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(erdgas_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(pumpspeicher_mwh) AS mwh\n        FROM \n            energy_smard\n        UNION ALL\n        SELECT \n            SUM(sonstige_konventionelle_mwh) AS mwh\n        FROM \n            energy_smard\n    ) AS total_energy) * 100 AS percentage\nFROM \n    (\n        SELECT 'Biomass' AS sourcename, SUM(biomasse_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Hydropower' AS sourcename, SUM(wasserkraft_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Wind Offshore' AS sourcename, SUM(wind_offshore_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Wind Onshore' AS sourcename, SUM(wind_onshore_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Photovoltaic' AS sourcename, SUM(photovoltaik_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Other Renewables' AS sourcename, SUM(sonstige_erneuerbare_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Nuclear Energy' AS sourcename, SUM(kernenergie_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Lignite' AS sourcename, SUM(braunkohle_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Hard Coal' AS sourcename, SUM(steinkohle_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Natural Gas' AS sourcename, SUM(erdgas_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Pumped Storage' AS sourcename, SUM(pumpspeicher_mwh) AS mwh FROM energy_smard\n        UNION ALL\n        SELECT 'Other Conventional' AS sourcename, SUM(sonstige_konventionelle_mwh) AS mwh FROM energy_smard\n    ) es\nGROUP BY \n    es.sourcename\nORDER BY \n    es.sourcename;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 7,
+        "x": 17,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    c.material,\n    SUM(c.quantity * c.masskg) AS total_mass_kg\nFROM \n    component c\nJOIN \n    material m ON c.material = m.material\nGROUP BY \n    c.material, m.emissionfactor\nORDER BY \n    c.material;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Mass Consumption per Material",
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 3,
+        "x": 0,
+        "y": 10
+      },
+      "id": 14,
+      "options": {
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "WITH total_emissions AS (\n    SELECT \n        SUM(energyemission) AS total_energy_emissions,\n        SUM(materialemission) AS total_material_emissions,\n        SUM(transportemission) AS total_transport_emissions,\n        SUM(energyemission + materialemission + transportemission) AS total_emissions\n    FROM \n        product_footprint\n)\nSELECT \n    'Energy' AS category,\n    (te.total_energy_emissions / te.total_emissions) * 100 AS percentage\nFROM \n    total_emissions te\n\nUNION ALL\n\nSELECT \n    'Material' AS category,\n    (te.total_material_emissions / te.total_emissions) * 100 AS percentage\nFROM \n    total_emissions te\n\nUNION ALL\n\nSELECT \n    'Transport' AS category,\n    (te.total_transport_emissions / te.total_emissions) * 100 AS percentage\nFROM \n    total_emissions te;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Company Emissions per Type",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Emissions per Product [massCO2/unit]",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 5,
+        "x": 3,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    TO_CHAR(o.startdate, 'YYYY-MM-DD') AS date, \n    SUM(pf.energyemission + pf.materialemission + pf.transportemission) / COUNT(DISTINCT o.ordernumber) AS \"Emission Intensity\"\nFROM \n    product_footprint pf\nJOIN \n    \"order\" o ON pf.ordernumber = o.ordernumber\nGROUP BY \n    TO_CHAR(o.startdate, 'YYYY-MM-DD')\nORDER BY \n    TO_CHAR(o.startdate, 'YYYY-MM-DD');\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Company Emission Intensity (emissions per product)",
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 8,
+        "y": 11
+      },
+      "id": 6,
+      "options": {
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    o.hall,\n    SUM(pf.energyemission + pf.materialemission + pf.transportemission) AS total_emission\nFROM \n    product_footprint pf\nJOIN \n    \"order\" o ON pf.ordernumber = o.ordernumber\nWHERE \n    o.factory = '$FactoryName'\nGROUP BY \n    o.hall\nORDER BY \n    o.hall;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Emissions per Facility in the Factory",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 11,
+        "y": 11
+      },
+      "id": 7,
+      "options": {
+        "displayMode": "lcd",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 14
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    o.hall,\n    SUM(pf.energyemission) AS \"Energy emissions\",\n    SUM(pf.materialemission) AS \"Material emissions\",\n    SUM(pf.transportemission) AS \"Transport emissions\"\nFROM \n    product_footprint pf\nJOIN \n    \"order\" o ON pf.ordernumber = o.ordernumber\nWHERE \n    o.factory = '$FactoryName'\nGROUP BY \n    o.hall\nORDER BY \n    o.hall;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 11
+      },
+      "id": 12,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    c.material,\n    SUM(c.quantity * c.masskg * m.emissionfactor) AS total_material_emissions_kgCO2\nFROM \n    component c\nJOIN \n    material m ON c.material = m.material\nGROUP BY \n    c.material, m.emissionfactor\nORDER BY \n    c.material;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Emissions per Material [massCO2eq.]",
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Emissions [massCO2eq.]",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 4,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ordernumber"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "Order"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 21
+      },
+      "id": 1,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xField": "ordernumber",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    ordernumber::text AS ordernumber, \n    energyemission, \n    materialemission, \n    transportemission, \n    (energyemission + materialemission + transportemission) AS totalemission\nFROM \n    product_footprint;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "All Orders Emissions",
+      "transparent": true,
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 8,
+        "y": 21
+      },
+      "id": 4,
+      "options": {
+        "displayLabels": [
+          "percent",
+          "name"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    pf.productserial,\n    SUM(pf.energyemission + pf.materialemission + pf.transportemission) AS total_emission\nFROM \n    product_footprint pf\nJOIN \n    \"order\" o ON pf.ordernumber = o.ordernumber\nGROUP BY \n    pf.productserial\nORDER BY \n    pf.productserial;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Emissions per Product Type",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 6,
+        "x": 11,
+        "y": 21
+      },
+      "id": 5,
+      "options": {
+        "displayMode": "lcd",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "left",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 14
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    pf.productserial,\n    SUM(pf.energyemission) AS \"Energy emissions\",\n    SUM(pf.materialemission) AS \"Material emissions\",\n    SUM(pf.transportemission) AS \"Transport emissions\"\nFROM \n    product_footprint pf\nJOIN \n    \"order\" o ON pf.ordernumber = o.ordernumber\nGROUP BY \n    pf.productserial\nORDER BY \n    pf.productserial;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 21
+      },
+      "id": 13,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
+        },
+        "orientation": "horizontal",
+        "showValue": "always",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \n    s.suppliername,\n    SUM((c.quantity * c.masskg / 1000) * s.distance * m.emissionfactor) AS total_transport_emissions_kgCO2\nFROM \n    component c\nJOIN \n    supplier s ON c.supplierid = s.supplierid\nJOIN \n    material m ON m.material = 'Transport'\nGROUP BY \n    s.suppliername\nORDER BY \n    s.suppliername;\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Transport Emissions per Supplier [massCO2eq.]",
+      "transparent": true,
+      "type": "barchart"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Oldenburg",
+          "value": "Oldenburg"
+        },
+        "datasource": {
+          "type": "grafana-postgresql-datasource",
+          "uid": "P78DC24F8AA21B398"
+        },
+        "definition": "SELECT DISTINCT factory\nFROM \"order\"\nORDER BY factory;",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Factory Name",
+        "multi": false,
+        "name": "FactoryName",
+        "options": [],
+        "query": "SELECT DISTINCT factory\nFROM \"order\"\nORDER BY factory;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-05-08T00:00:00.000Z",
+    "to": "2023-06-02T00:00:00.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "ProductFootprint",
+  "uid": "fdla2dfugtw5ce",
+  "version": 3,
+  "weekStart": ""
+}

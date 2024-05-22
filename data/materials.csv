@@ -1,0 +1,147 @@
+material_id,factory_id,timestamp,material_type,quantity_kg,supplier,distance_km,transport_method
+1,1,2021-01-01 00:00:00,Steel,10000,Supplier A,500,Truck
+2,1,2021-02-01 00:00:00,Aluminum,8000,Supplier B,800,Ship
+3,2,2021-01-01 00:00:00,Plastic,6000,Supplier C,300,Train
+4,2,2021-02-01 00:00:00,Copper,7000,Supplier D,1000,Truck
+5,1,2021-03-01 00:00:00,Rubber,5000,Supplier E,600,Air
+6,1,2021-04-01 00:00:00,Cast Iron,7000,Supplier F,400,Truck
+7,2,2021-03-01 00:00:00,Electronics,3000,Supplier G,1200,Air
+8,2,2021-04-01 00:00:00,Cables,5000,Supplier H,900,Ship
+9,1,2021-05-01 00:00:00,Polybutadine,4000,Supplier I,800,Train
+10,1,2021-06-01 00:00:00,Glass Fiber,4500,Supplier J,700,Truck
+11,2,2021-05-01 00:00:00,Leather,2000,Supplier K,1300,Air
+12,2,2021-06-01 00:00:00,Carbon Fiber,2500,Supplier L,1100,Ship
+13,1,2021-07-01 00:00:00,Stainless Steel,9500,Supplier M,1000,Train
+14,1,2021-08-01 00:00:00,Silicon,3500,Supplier N,1400,Air
+15,2,2021-07-01 00:00:00,Gold,500,Supplier O,1600,Ship
+16,2,2021-08-01 00:00:00,Lithium,1500,Supplier P,1700,Truck
+17,1,2021-09-01 00:00:00,Lead,4000,Supplier Q,1800,Ship
+18,1,2021-10-01 00:00:00,Tin,3500,Supplier R,2000,Train
+19,2,2021-09-01 00:00:00,Neodymium,4500,Supplier S,1900,Truck
+20,2,2021-10-01 00:00:00,Nickel,6500,Supplier T,1500,Air
+21,1,2021-11-01 00:00:00,Zinc,5500,Supplier U,1000,Truck
+22,1,2021-12-01 00:00:00,Platinum,1200,Supplier V,2200,Ship
+23,2,2021-11-01 00:00:00,Palladium,800,Supplier W,2400,Air
+24,2,2021-12-01 00:00:00,Tungsten,4000,Supplier X,2500,Truck
+25,1,2022-01-01 00:00:00,Magnesium,3000,Supplier Y,2600,Ship
+26,1,2022-02-01 00:00:00,Titanium,2700,Supplier Z,2800,Air
+27,2,2022-01-01 00:00:00,Graphite,5000,Supplier AA,2900,Truck
+28,2,2022-02-01 00:00:00,Polyethylene,6000,Supplier BB,3000,Train
+29,1,2022-03-01 00:00:00,Polypropylene,5500,Supplier CC,3100,Ship
+30,1,2022-04-01 00:00:00,Polyvinyl Chloride (PVC),7000,Supplier DD,3200,Truck
+31,2,2022-03-01 00:00:00,Acrylic,4800,Supplier EE,3300,Air
+32,2,2022-04-01 00:00:00,Polystyrene,4900,Supplier FF,3400,Train
+33,1,2022-05-01 00:00:00,Polycarbonate,5100,Supplier GG,3500,Ship
+34,1,2022-06-01 00:00:00,Fiberglass,5300,Supplier HH,3600,Truck
+35,2,2022-05-01 00:00:00,Chromium,5400,Supplier II,3700,Air
+36,2,2022-06-01 00:00:00,Manganese,5500,Supplier JJ,3800,Ship
+37,1,2022-07-01 00:00:00,Bismuth,5600,Supplier KK,3900,Truck
+38,1,2022-08-01 00:00:00,Cobalt,5700,Supplier LL,4000,Train
+39,2,2022-07-01 00:00:00,Molybdenum,5800,Supplier MM,4100,Ship
+40,2,2022-08-01 00:00:00,Steel,6000,Supplier NN,4200,Truck
+41,1,2022-09-01 00:00:00,Aluminum,6200,Supplier OO,4300,Ship
+42,1,2022-10-01 00:00:00,Plastic,6400,Supplier PP,4400,Train
+43,2,2022-09-01 00:00:00,Copper,6600,Supplier QQ,4500,Truck
+44,2,2022-10-01 00:00:00,Rubber,6800,Supplier RR,4600,Ship
+45,1,2022-11-01 00:00:00,Cast Iron,7000,Supplier SS,4700,Truck
+46,1,2022-12-01 00:00:00,Electronics,7200,Supplier TT,4800,Air
+47,2,2022-11-01 00:00:00,Cables,7400,Supplier UU,4900,Ship
+48,2,2022-12-01 00:00:00,Polybutadine,7600,Supplier VV,5000,Train
+49,1,2023-01-01 00:00:00,Glass Fiber,7800,Supplier WW,5100,Truck
+50,1,2023-02-01 00:00:00,Leather,8000,Supplier XX,5200,Air
+51,2,2023-01-01 00:00:00,Carbon Fiber,8200,Supplier YY,5300,Ship
+52,2,2023-02-01 00:00:00,Stainless Steel,8400,Supplier ZZ,5400,Train
+53,1,2023-03-01 00:00:00,Silicon,8600,Supplier AAA,5500,Air
+54,1,2023-04-01 00:00:00,Gold,8800,Supplier BBB,5600,Ship
+55,2,2023-03-01 00:00:00,Lithium,9000,Supplier CCC,5700,Truck
+56,2,2023-04-01 00:00:00,Lead,9200,Supplier DDD,5800,Ship
+57,1,2023-05-01 00:00:00,Tin,9400,Supplier EEE,5900,Train
+58,1,2023-06-01 00:00:00,Neodymium,9600,Supplier FFF,6000,Truck
+59,2,2023-05-01 00:00:00,Nickel,9800,Supplier GGG,6100,Air
+60,2,2023-06-01 00:00:00,Zinc,10000,Supplier HHH,6200,Truck
+61,1,2023-07-01 00:00:00,Platinum,10200,Supplier III,6300,Ship
+62,1,2023-08-01 00:00:00,Palladium,10400,Supplier JJJ,6400,Air
+63,2,2023-07-01 00:00:00,Tungsten,10600,Supplier KKK,6500,Truck
+64,2,2023-08-01 00:00:00,Magnesium,10800,Supplier LLL,6600,Ship
+65,1,2023-09-01 00:00:00,Titanium,11000,Supplier MMM,6700,Air
+66,1,2023-10-01 00:00:00,Graphite,11200,Supplier NNN,6800,Truck
+67,2,2023-09-01 00:00:00,Polyethylene,11400,Supplier OOO,6900,Train
+68,2,2023-10-01 00:00:00,Polypropylene,11600,Supplier PPP,7000,Ship
+69,1,2023-11-01 00:00:00,Polyvinyl Chloride (PVC),11800,Supplier QQQ,7100,Truck
+70,1,2023-12-01 00:00:00,Acrylic,12000,Supplier RRR,7200,Air
+71,2,2023-11-01 00:00:00,Polystyrene,12200,Supplier SSS,7300,Train
+72,2,2023-12-01 00:00:00,Polycarbonate,12400,Supplier TTT,7400,Ship
+73,1,2023-12-01 00:00:00,Fiberglass,12600,Supplier UUU,7500,Truck
+74,1,2021-01-01 00:00:00,Steel,1000,Supplier A,500,Truck
+75,1,2021-01-01 00:00:00,Aluminum,800,Supplier B,800,Ship
+76,1,2021-01-01 00:00:00,Plastic,600,Supplier C,300,Train
+77,1,2021-01-01 00:00:00,Copper,700,Supplier D,1000,Truck
+78,1,2021-01-01 00:00:00,Rubber,500,Supplier E,600,Air
+79,1,2021-01-01 00:00:00,Cast Iron,700,Supplier F,400,Truck
+80,1,2021-01-01 00:00:00,Electronics,300,Supplier G,1200,Air
+81,1,2021-01-01 00:00:00,Cables,500,Supplier H,900,Ship
+82,1,2021-01-01 00:00:00,Polybutadine,400,Supplier I,800,Train
+83,1,2021-01-01 00:00:00,Glass Fiber,450,Supplier J,700,Truck
+84,1,2021-01-01 00:00:00,Leather,200,Supplier K,1300,Air
+85,1,2021-01-01 00:00:00,Carbon Fiber,250,Supplier L,1100,Ship
+86,1,2021-01-01 00:00:00,Stainless Steel,950,Supplier M,1000,Train
+87,1,2021-01-01 00:00:00,Silicon,350,Supplier N,1400,Air
+88,1,2021-01-01 00:00:00,Gold,50,Supplier O,1600,Ship
+89,1,2021-01-01 00:00:00,Lithium,150,Supplier P,1700,Truck
+90,1,2021-01-01 00:00:00,Lead,400,Supplier Q,1800,Ship
+91,1,2021-01-01 00:00:00,Tin,350,Supplier R,2000,Train
+92,1,2021-01-01 00:00:00,Neodymium,450,Supplier S,1900,Truck
+93,1,2021-01-01 00:00:00,Nickel,650,Supplier T,1500,Air
+94,1,2021-01-01 00:00:00,Zinc,550,Supplier U,1000,Truck
+95,1,2021-01-01 00:00:00,Platinum,120,Supplier V,2200,Ship
+96,1,2021-01-01 00:00:00,Palladium,80,Supplier W,2400,Air
+97,1,2021-01-01 00:00:00,Tungsten,400,Supplier X,2500,Truck
+98,1,2021-01-01 00:00:00,Magnesium,300,Supplier Y,2600,Ship
+99,1,2021-01-01 00:00:00,Titanium,270,Supplier Z,2800,Air
+100,1,2021-01-01 00:00:00,Graphite,500,Supplier AA,2900,Truck
+101,1,2021-01-01 00:00:00,Polyethylene,600,Supplier BB,3000,Train
+102,1,2021-01-01 00:00:00,Polypropylene,550,Supplier CC,3100,Ship
+103,1,2021-01-01 00:00:00,Polyvinyl Chloride (PVC),700,Supplier DD,3200,Truck
+104,1,2021-01-01 00:00:00,Acrylic,480,Supplier EE,3300,Air
+105,1,2021-01-01 00:00:00,Polystyrene,490,Supplier FF,3400,Train
+106,1,2021-01-01 00:00:00,Polycarbonate,510,Supplier GG,3500,Ship
+107,1,2021-01-01 00:00:00,Fiberglass,530,Supplier HH,3600,Truck
+108,1,2021-01-01 00:00:00,Chromium,540,Supplier II,3700,Air
+109,1,2021-01-01 00:00:00,Manganese,550,Supplier JJ,3800,Ship
+110,1,2021-01-01 00:00:00,Bismuth,560,Supplier KK,3900,Truck
+111,1,2021-01-01 00:00:00,Cobalt,570,Supplier LL,4000,Train
+112,1,2021-01-01 00:00:00,Molybdenum,580,Supplier MM,4100,Ship
+113,1,2021-01-01 00:00:00,Steel,600,Supplier NN,4200,Truck
+114,1,2021-01-01 00:00:00,Aluminum,620,Supplier OO,4300,Ship
+115,1,2021-01-01 00:00:00,Plastic,640,Supplier PP,4400,Train
+116,1,2021-01-01 00:00:00,Copper,660,Supplier QQ,4500,Truck
+117,1,2021-01-01 00:00:00,Rubber,680,Supplier RR,4600,Ship
+118,1,2021-01-01 00:00:00,Cast Iron,700,Supplier SS,4700,Truck
+119,1,2021-01-01 00:00:00,Electronics,720,Supplier TT,4800,Air
+120,1,2021-01-01 00:00:00,Cables,740,Supplier UU,4900,Ship
+121,1,2021-01-01 00:00:00,Polybutadine,760,Supplier VV,5000,Train
+122,1,2021-01-01 00:00:00,Glass Fiber,780,Supplier WW,5100,Truck
+123,1,2021-01-01 00:00:00,Leather,800,Supplier XX,5200,Air
+124,1,2021-01-01 00:00:00,Carbon Fiber,820,Supplier YY,5300,Ship
+125,1,2021-01-01 00:00:00,Stainless Steel,840,Supplier ZZ,5400,Train
+126,1,2021-01-01 00:00:00,Silicon,860,Supplier AAA,5500,Air
+127,1,2021-01-01 00:00:00,Gold,880,Supplier BBB,5600,Ship
+128,1,2021-01-01 00:00:00,Lithium,900,Supplier CCC,5700,Truck
+129,1,2021-01-01 00:00:00,Lead,920,Supplier DDD,5800,Ship
+130,1,2021-01-01 00:00:00,Tin,940,Supplier EEE,5900,Train
+131,1,2021-01-01 00:00:00,Neodymium,960,Supplier FFF,6000,Truck
+132,1,2021-01-01 00:00:00,Nickel,980,Supplier GGG,6100,Air
+133,1,2021-01-01 00:00:00,Zinc,1000,Supplier HHH,6200,Truck
+134,1,2021-01-01 00:00:00,Platinum,1020,Supplier III,6300,Ship
+135,1,2021-01-01 00:00:00,Palladium,1040,Supplier JJJ,6400,Air
+136,1,2021-01-01 00:00:00,Tungsten,1060,Supplier KKK,6500,Truck
+137,1,2021-01-01 00:00:00,Magnesium,1080,Supplier LLL,6600,Ship
+138,1,2021-01-01 00:00:00,Titanium,1100,Supplier MMM,6700,Air
+139,1,2021-01-01 00:00:00,Graphite,1120,Supplier NNN,6800,Truck
+140,1,2021-01-01 00:00:00,Polyethylene,1140,Supplier OOO,6900,Train
+141,1,2021-01-01 00:00:00,Polypropylene,1160,Supplier PPP,7000,Ship
+142,1,2021-01-01 00:00:00,Polyvinyl Chloride (PVC),1180,Supplier QQQ,7100,Truck
+143,1,2021-01-01 00:00:00,Acrylic,1200,Supplier RRR,7200,Air
+144,1,2021-01-01 00:00:00,Polystyrene,1220,Supplier SSS,7300,Train
+145,1,2021-01-01 00:00:00,Polycarbonate,1240,Supplier TTT,7400,Ship
+146,1,2021-01-01 00:00:00,Fiberglass,1260,Supplier UUU,7500,Truck

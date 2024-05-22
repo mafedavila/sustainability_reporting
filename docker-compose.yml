@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  timescaledb:
+    build:
+      context: .
+      dockerfile: ./database/Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example_password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+
+  grafana:
+    build:
+      context: .
+      dockerfile: ./dashboard/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_USERS_DEFAULT_THEME: light
+      GF_PATHS_PROVISIONING: /etc/grafana/provisioning
+      GF_SECURITY_ALLOW_EMBEDDING: "true"
+    volumes:
+      - ./dashboard/provisioning:/etc/grafana/provisioning
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      timescaledb:
+        condition: service_healthy
+    command:
+      [
+        "/bin/bash",
+        "-c",
+        "./wait-for-it.sh timescaledb:5432 -- ./start_grafana.sh"
+      ]
+
+  angular:
+    build:
+      context: ./website
+      dockerfile: Dockerfile  
+    ports:
+      - "4200:80"  
+    volumes:
+      - ./website:/usr/src/app  
+    depends_on:
+      - grafana
+
+volumes:
+  db-data:
+  grafana-data:

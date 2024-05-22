@@ -1,0 +1,265 @@
+usage_id,factory_id,timestamp,energy_source,energy_used_kWh
+1,1,2021-01-01,Biomass,1000
+2,1,2021-01-01,Hydropower,500
+3,1,2021-01-01,Offshore Wind,300
+4,1,2021-01-01,Onshore Wind,200
+5,1,2021-01-01,Photovoltaic (Solar Power),150
+6,1,2021-01-01,Other Renewables,100
+7,1,2021-01-01,Nuclear Energy,400
+8,1,2021-01-01,Lignite (Brown Coal),600
+9,1,2021-01-01,Hard Coal,500
+10,1,2021-01-01,Natural Gas,700
+11,1,2021-01-01,Pumped Storage,50
+12,1,2021-01-01,Other Conventional,800
+13,1,2021-02-01,Biomass,1100
+14,1,2021-02-01,Hydropower,550
+15,1,2021-02-01,Offshore Wind,330
+16,1,2021-02-01,Onshore Wind,220
+17,1,2021-02-01,Photovoltaic (Solar Power),165
+18,1,2021-02-01,Other Renewables,110
+19,1,2021-02-01,Nuclear Energy,440
+20,1,2021-02-01,Lignite (Brown Coal),660
+21,1,2021-02-01,Hard Coal,550
+22,1,2021-02-01,Natural Gas,770
+23,1,2021-02-01,Pumped Storage,55
+24,1,2021-02-01,Other Conventional,880
+25,1,2022-01-01,Biomass,1200
+26,1,2022-01-01,Hydropower,600
+27,1,2022-01-01,Offshore Wind,360
+28,1,2022-01-01,Onshore Wind,240
+29,1,2022-01-01,Photovoltaic (Solar Power),180
+30,1,2022-01-01,Other Renewables,120
+31,1,2022-01-01,Nuclear Energy,480
+32,1,2022-01-01,Lignite (Brown Coal),720
+33,1,2022-01-01,Hard Coal,600
+34,1,2022-01-01,Natural Gas,840
+35,1,2022-01-01,Pumped Storage,60
+36,1,2022-01-01,Other Conventional,960
+37,1,2023-01-01,Biomass,1300
+38,1,2023-01-01,Hydropower,650
+39,1,2023-01-01,Offshore Wind,390
+40,1,2023-01-01,Onshore Wind,260
+41,1,2023-01-01,Photovoltaic (Solar Power),195
+42,1,2023-01-01,Other Renewables,130
+43,1,2023-01-01,Nuclear Energy,520
+44,1,2023-01-01,Lignite (Brown Coal),780
+45,1,2023-01-01,Hard Coal,650
+46,1,2023-01-01,Natural Gas,910
+47,1,2023-01-01,Pumped Storage,65
+48,1,2023-01-01,Other Conventional,1040
+49,2,2021-01-01,Biomass,900
+50,2,2021-01-01,Hydropower,450
+51,2,2021-01-01,Offshore Wind,270
+52,2,2021-01-01,Onshore Wind,180
+53,2,2021-01-01,Photovoltaic (Solar Power),135
+54,2,2021-01-01,Other Renewables,90
+55,2,2021-01-01,Nuclear Energy,360
+56,2,2021-01-01,Lignite (Brown Coal),540
+57,2,2021-01-01,Hard Coal,450
+58,2,2021-01-01,Natural Gas,630
+59,2,2021-01-01,Pumped Storage,45
+60,2,2021-01-01,Other Conventional,720
+61,2,2021-02-01,Biomass,990
+62,2,2021-02-01,Hydropower,495
+63,2,2021-02-01,Offshore Wind,297
+64,2,2021-02-01,Onshore Wind,198
+65,2,2021-02-01,Photovoltaic (Solar Power),149
+66,2,2021-02-01,Other Renewables,99
+67,2,2021-02-01,Nuclear Energy,396
+68,2,2021-02-01,Lignite (Brown Coal),594
+69,2,2021-02-01,Hard Coal,495
+70,2,2021-02-01,Natural Gas,693
+71,2,2021-02-01,Pumped Storage,50
+72,2,2021-02-01,Other Conventional,792
+73,2,2022-01-01,Biomass,1080
+74,2,2022-01-01,Hydropower,540
+75,2,2022-01-01,Offshore Wind,324
+76,2,2022-01-01,Onshore Wind,216
+77,2,2022-01-01,Photovoltaic (Solar Power),162
+78,2,2022-01-01,Other Renewables,108
+79,2,2022-01-01,Nuclear Energy,432
+80,2,2022-01-01,Lignite (Brown Coal),648
+81,2,2022-01-01,Hard Coal,540
+82,2,2022-01-01,Natural Gas,756
+83,2,2022-01-01,Pumped Storage,54
+84,2,2022-01-01,Other Conventional,864
+85,2,2023-01-01,Biomass,1170
+86,2,2023-01-01,Hydropower,585
+87,2,2023-01-01,Offshore Wind,351
+88,2,2023-01-01,Onshore Wind,234
+89,2,2023-01-01,Photovoltaic (Solar Power),175
+90,2,2023-01-01,Other Renewables,117
+91,2,2023-01-01,Nuclear Energy,468
+92,2,2023-01-01,Lignite (Brown Coal),702
+93,2,2023-01-01,Hard Coal,585
+94,2,2023-01-01,Natural Gas,819
+95,2,2023-01-01,Pumped Storage,58
+96,2,2023-01-01,Other Conventional,936
+97,1,2021-03-01,Biomass,1200
+98,1,2021-03-01,Hydropower,600
+99,1,2021-03-01,Offshore Wind,360
+100,1,2021-03-01,Onshore Wind,240
+101,1,2021-03-01,Photovoltaic (Solar Power),180
+102,1,2021-03-01,Other Renewables,120
+103,1,2021-03-01,Nuclear Energy,480
+104,1,2021-03-01,Lignite (Brown Coal),720
+105,1,2021-03-01,Hard Coal,600
+106,1,2021-03-01,Natural Gas,840
+107,1,2021-03-01,Pumped Storage,60
+108,1,2021-03-01,Other Conventional,960
+109,1,2021-04-01,Biomass,1300
+110,1,2021-04-01,Hydropower,650
+111,1,2021-04-01,Offshore Wind,390
+112,1,2021-04-01,Onshore Wind,260
+113,1,2021-04-01,Photovoltaic (Solar Power),195
+114,1,2021-04-01,Other Renewables,130
+115,1,2021-04-01,Nuclear Energy,520
+116,1,2021-04-01,Lignite (Brown Coal),780
+117,1,2021-04-01,Hard Coal,650
+118,1,2021-04-01,Natural Gas,910
+119,1,2021-04-01,Pumped Storage,65
+120,1,2021-04-01,Other Conventional,1040
+121,1,2022-02-01,Biomass,1200
+122,1,2022-02-01,Hydropower,600
+123,1,2022-02-01,Offshore Wind,360
+124,1,2022-02-01,Onshore Wind,240
+125,1,2022-02-01,Photovoltaic (Solar Power),180
+126,1,2022-02-01,Other Renewables,120
+127,1,2022-02-01,Nuclear Energy,480
+128,1,2022-02-01,Lignite (Brown Coal),720
+129,1,2022-02-01,Hard Coal,600
+130,1,2022-02-01,Natural Gas,840
+131,1,2022-02-01,Pumped Storage,60
+132,1,2022-02-01,Other Conventional,960
+133,1,2023-02-01,Biomass,1300
+134,1,2023-02-01,Hydropower,650
+135,1,2023-02-01,Offshore Wind,390
+136,1,2023-02-01,Onshore Wind,260
+137,1,2023-02-01,Photovoltaic (Solar Power),195
+138,1,2023-02-01,Other Renewables,130
+139,1,2023-02-01,Nuclear Energy,520
+140,1,2023-02-01,Lignite (Brown Coal),780
+141,1,2023-02-01,Hard Coal,650
+142,1,2023-02-01,Natural Gas,910
+143,1,2023-02-01,Pumped Storage,65
+144,1,2023-02-01,Other Conventional,1040
+145,2,2021-03-01,Biomass,1080
+146,2,2021-03-01,Hydropower,540
+147,2,2021-03-01,Offshore Wind,324
+148,2,2021-03-01,Onshore Wind,216
+149,2,2021-03-01,Photovoltaic (Solar Power),162
+150,2,2021-03-01,Other Renewables,108
+151,2,2021-03-01,Nuclear Energy,432
+152,2,2021-03-01,Lignite (Brown Coal),648
+153,2,2021-03-01,Hard Coal,540
+154,2,2021-03-01,Natural Gas,756
+155,2,2021-03-01,Pumped Storage,54
+156,2,2021-03-01,Other Conventional,864
+157,2,2021-04-01,Biomass,1170
+158,2,2021-04-01,Hydropower,585
+159,2,2021-04-01,Offshore Wind,351
+160,2,2021-04-01,Onshore Wind,234
+161,2,2021-04-01,Photovoltaic (Solar Power),175
+162,2,2021-04-01,Other Renewables,117
+163,2,2021-04-01,Nuclear Energy,468
+164,2,2021-04-01,Lignite (Brown Coal),702
+165,2,2021-04-01,Hard Coal,585
+166,2,2021-04-01,Natural Gas,819
+167,2,2021-04-01,Pumped Storage,58
+168,2,2021-04-01,Other Conventional,936
+169,2,2022-02-01,Biomass,1080
+170,2,2022-02-01,Hydropower,540
+171,2,2022-02-01,Offshore Wind,324
+172,2,2022-02-01,Onshore Wind,216
+173,2,2022-02-01,Photovoltaic (Solar Power),162
+174,2,2022-02-01,Other Renewables,108
+175,2,2022-02-01,Nuclear Energy,432
+176,2,2022-02-01,Lignite (Brown Coal),648
+177,2,2022-02-01,Hard Coal,540
+178,2,2022-02-01,Natural Gas,756
+179,2,2022-02-01,Pumped Storage,54
+180,2,2022-02-01,Other Conventional,864
+181,2,2023-02-01,Biomass,1170
+182,2,2023-02-01,Hydropower,585
+183,2,2023-02-01,Offshore Wind,351
+184,2,2023-02-01,Onshore Wind,234
+185,2,2023-02-01,Photovoltaic (Solar Power),175
+186,2,2023-02-01,Other Renewables,117
+187,2,2023-02-01,Nuclear Energy,468
+188,2,2023-02-01,Lignite (Brown Coal),702
+189,2,2023-02-01,Hard Coal,585
+190,2,2023-02-01,Natural Gas,819
+191,2,2023-02-01,Pumped Storage,58
+192,2,2023-02-01,Other Conventional,936
+193,1,2023-03-01,Biomass,1350
+194,1,2023-03-01,Hydropower,675
+195,1,2023-03-01,Offshore Wind,405
+196,1,2023-03-01,Onshore Wind,270
+197,1,2023-03-01,Photovoltaic (Solar Power),202.5
+198,1,2023-03-01,Other Renewables,135
+199,1,2023-03-01,Nuclear Energy,540
+200,1,2023-03-01,Lignite (Brown Coal),810
+201,1,2023-03-01,Hard Coal,675
+202,1,2023-03-01,Natural Gas,945
+203,1,2023-03-01,Pumped Storage,67.5
+204,1,2023-03-01,Other Conventional,1080
+205,1,2023-04-01,Biomass,1400
+206,1,2023-04-01,Hydropower,700
+207,1,2023-04-01,Offshore Wind,420
+208,1,2023-04-01,Onshore Wind,280
+209,1,2023-04-01,Photovoltaic (Solar Power),210
+210,1,2023-04-01,Other Renewables,140
+211,1,2023-04-01,Nuclear Energy,560
+212,1,2023-04-01,Lignite (Brown Coal),840
+213,1,2023-04-01,Hard Coal,700
+214,1,2023-04-01,Natural Gas,980
+215,1,2023-04-01,Pumped Storage,70
+216,1,2023-04-01,Other Conventional,1120
+217,1,2023-12-01,Biomass,1500
+218,1,2023-12-01,Hydropower,750
+219,1,2023-12-01,Offshore Wind,450
+220,1,2023-12-01,Onshore Wind,300
+221,1,2023-12-01,Photovoltaic (Solar Power),225
+222,1,2023-12-01,Other Renewables,150
+223,1,2023-12-01,Nuclear Energy,600
+224,1,2023-12-01,Lignite (Brown Coal),900
+225,1,2023-12-01,Hard Coal,750
+226,1,2023-12-01,Natural Gas,1050
+227,1,2023-12-01,Pumped Storage,75
+228,1,2023-12-01,Other Conventional,1200
+229,2,2023-03-01,Biomass,1215
+230,2,2023-03-01,Hydropower,608
+231,2,2023-03-01,Offshore Wind,365
+232,2,2023-03-01,Onshore Wind,243
+233,2,2023-03-01,Photovoltaic (Solar Power),182
+234,2,2023-03-01,Other Renewables,122
+235,2,2023-03-01,Nuclear Energy,486
+236,2,2023-03-01,Lignite (Brown Coal),729
+237,2,2023-03-01,Hard Coal,608
+238,2,2023-03-01,Natural Gas,850
+239,2,2023-03-01,Pumped Storage,61
+240,2,2023-03-01,Other Conventional,972
+241,2,2023-04-01,Biomass,1260
+242,2,2023-04-01,Hydropower,630
+243,2,2023-04-01,Offshore Wind,378
+244,2,2023-04-01,Onshore Wind,252
+245,2,2023-04-01,Photovoltaic (Solar Power),189
+246,2,2023-04-01,Other Renewables,126
+247,2,2023-04-01,Nuclear Energy,504
+248,2,2023-04-01,Lignite (Brown Coal),756
+249,2,2023-04-01,Hard Coal,630
+250,2,2023-04-01,Natural Gas,882
+251,2,2023-04-01,Pumped Storage,63
+252,2,2023-04-01,Other Conventional,1008
+253,2,2023-12-01,Biomass,1350
+254,2,2023-12-01,Hydropower,675
+255,2,2023-12-01,Offshore Wind,405
+256,2,2023-12-01,Onshore Wind,270
+257,2,2023-12-01,Photovoltaic (Solar Power),202.5
+258,2,2023-12-01,Other Renewables,135
+259,2,2023-12-01,Nuclear Energy,540
+260,2,2023-12-01,Lignite (Brown Coal),810
+261,2,2023-12-01,Hard Coal,675
+262,2,2023-12-01,Natural Gas,945
+263,2,2023-12-01,Pumped Storage,67.5
+264,2,2023-12-01,Other Conventional,1080

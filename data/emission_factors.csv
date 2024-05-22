@@ -1,0 +1,44 @@
+emission_id,material_type,material,emission_factor,emission_factor_units
+1,material,Cast Iron,1.5,kgCO2_per_kg
+2,material,Steel,1.569,kgCO2_per_kg
+3,material,Plastic,3.0,kgCO2_per_kg
+4,material,Electronics,189.9,kgCO2_per_kg
+5,material,Cables,4.2,kgCO2_per_kg
+6,material,Polybutadine,3.29,kgCO2_per_kg
+7,material,Glass Fiber,2.54,kgCO2_per_kg
+8,material,Aluminum,9.274,kgCO2_per_kg
+9,material,Leather,46.9,kgCO2_per_kg
+10,material,Carbon Fiber,20.0,kgCO2_per_kg
+11,material,Stainless Steel,4.529,kgCO2_per_kg
+12,material,Copper,2.874,kgCO2_per_kg
+13,material,Silicon,58.2,kgCO2_per_kg
+14,material,Gold,179,kgCO2_per_kg
+15,material,Lithium,18.344,kgCO2_per_kg
+16,material,Lead,1.36275,kgCO2_per_kg
+17,material,Tin,7.5,kgCO2_per_kg
+18,material,Neodymium,50.0,kgCO2_per_kg
+19,material,Nickel,6.06,kgCO2_per_kg
+20,material,Zinc,3.26,kgCO2_per_kg
+21,material,Platinum,138.916,kgCO2_per_kg
+22,material,Palladium,93.356,kgCO2_per_kg
+23,material,Tungsten,2.87,kgCO2_per_kg
+24,material,Magnesium,73.117,kgCO2_per_kg
+25,material,Titanium,27.373,kgCO2_per_kg
+26,material,Graphite,0.0273,kgCO2_per_kg
+27,material,Rubber,3.29,kgCO2_per_kg
+28,material,Polyethylene,2.59,kgCO2_per_kg
+29,material,Polypropylene,3.53,kgCO2_per_kg
+30,material,Polyvinyl Chloride (PVC),1.905,kgCO2_per_kg
+31,material,Acrylic,3.7,kgCO2_per_kg
+32,material,Polystyrene,14.0,kgCO2_per_kg
+33,material,Polycarbonate,23.0,kgCO2_per_kg
+34,material,Fiberglass,2.54,kgCO2_per_kg
+35,material,Chromium,26.261,kgCO2_per_kg
+36,material,Manganese,2.525,kgCO2_per_kg
+37,material,Bismuth,22.104,kgCO2_per_kg
+38,material,Cobalt,7.721,kgCO2_per_kg
+39,material,Molybdenum,8.634,kgCO2_per_kg
+40,transport,Truck,0.1,kgCO2_per_km_per_kg
+41,transport,Ship,0.02,kgCO2_per_km_per_kg
+42,transport,Train,0.03,kgCO2_per_km_per_kg
+43,transport,Air,0.5,kgCO2_per_km_per_kg
