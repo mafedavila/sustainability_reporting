@@ -1,26 +1,24 @@
 .methodology-title {
-    font-size: 24px; 
-    color: #333; 
-    //font-weight: bold; 
-    margin-left: 20px;
-    margin-bottom: 10px; 
-    text-align: left; 
-  }
+  font-size: 24px; 
+  color: #333; 
+  margin-left: 20px;
+  margin-bottom: 10px; 
+  text-align: left; 
+}
 
-  .methodology-body {
-    font-size: 16px; 
-    color: #333; 
-    //font-weight: bold; 
-    margin-left: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px; 
-    text-align: left; 
-  }
+.methodology-body {
+  font-size: 16px; 
+  color: #333; 
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px; 
+  text-align: left; 
+}
 
-.svg-container {
-    svg {
+.image-container {
+  img {
       margin-left: 20px;
-      width: 90%;    
+      width: 50%;    
       height: auto;   
-    }
   }
+}
