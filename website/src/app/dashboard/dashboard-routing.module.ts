@@ -4,6 +4,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InfoComponent } from './components/info/info.component';
 import { UserComponent } from './components/user/user.component';
 import { SidenavWrapperComponent } from './components/sidenav-wrapper/sidenav-wrapper.component';
+import { CorporateCarbonFootprintComponent } from './components/corporate-carbon-footprint/corporate-carbon-footprint.component';
+import { ProductCarbonFootprintComponent } from './components/product-carbon-footprint/product-carbon-footprint.component';
 
 const routes: Routes = [
   // Sidenavwrapper Component acts like a shell & the active child Component gets rendered into the <router-outlet>
@@ -22,6 +24,14 @@ const routes: Routes = [
       {
         path: 'user',
         component: UserComponent
+      },
+      {
+        path: 'corporate-carbon-footprint',
+        component: CorporateCarbonFootprintComponent
+      },
+      {
+        path: 'product-carbon-footprint',
+        component: ProductCarbonFootprintComponent
       }
     ]
   },

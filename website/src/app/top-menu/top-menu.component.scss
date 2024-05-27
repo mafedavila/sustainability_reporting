@@ -1,0 +1,28 @@
+.top-menu {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      li {
+        a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          &:hover {
+            background-color: #111;
+          }
+        }
+      }
+    }
+  }
+  

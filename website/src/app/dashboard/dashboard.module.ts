@@ -9,9 +9,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavWrapperComponent } from './components/sidenav-wrapper/sidenav-wrapper.component';
+import { CorporateCarbonFootprintComponent } from './components/corporate-carbon-footprint/corporate-carbon-footprint.component';
+import { ProductCarbonFootprintComponent } from './components/product-carbon-footprint/product-carbon-footprint.component';
 
 @NgModule({
-  declarations: [SidenavWrapperComponent, DashboardComponent, InfoComponent, UserComponent],
+  declarations: [SidenavWrapperComponent, DashboardComponent, InfoComponent, UserComponent, CorporateCarbonFootprintComponent, ProductCarbonFootprintComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

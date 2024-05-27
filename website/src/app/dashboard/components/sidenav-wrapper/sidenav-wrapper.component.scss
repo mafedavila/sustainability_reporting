@@ -1,5 +1,6 @@
 mat-sidenav-container {
-  height: 100%;
+  height: calc(100% - 50px); /* Adjust based on the height of your top menu */
+  margin-top: 50px; /* Same height as the top menu */
 
   mat-sidenav {
     overflow: hidden;
