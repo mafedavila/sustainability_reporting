@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden; /* Ensure no extra scrollbars appear */
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 15px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensure sidebar is on top */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the logo horizontally */
+}
+
+.logo-container {
+  width: 60%;
+  text-align: center; /* Center the logo within the container */
+  margin-bottom: 20px; /* Add space between the logo and the menu */
+}
+
+.logo {
+  max-width: 100%; /* Ensure the logo fits within the sidebar */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%; /* Ensure the list takes full width */
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  display: block; /* Ensure the clickable area is the entire link */
+  padding: 5px;
+  font-size: 15px;
+}
+
+.sidebar ul li a:hover {
+  color: #007BFF;
+}
+
+.content {
+  margin-left: 220px; /* Ensure content starts after sidebar */
+  padding: 20px;
+  flex-grow: 1;
+  height: 100%;
+  overflow-y: auto; /* Enable scrolling for content if needed */
+  z-index: 1; /* Ensure content is below the sidebar */
+  position: relative; /* Ensure z-index works */
+}
+
+.tab-links {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: #3d97f8;
+  color: white;
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.tab-button:hover {
+  background-color: #0056b3;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #3d97f8;
+  margin: 20px 0;
+}
