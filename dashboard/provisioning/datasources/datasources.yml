@@ -15,3 +15,18 @@ datasources:
   jsonData:
     sslmode: 'disable'
     timescaledb: true
+
+- name: grafana-postgresql-datasource-1
+  type: postgres
+  access: proxy
+  orgId: 1
+  url: timescaledb2:5432
+  database: postgres
+  user: postgres
+  secureJsonData:
+    password: example_password
+  version: 12
+  editable: true
+  jsonData:
+    sslmode: 'disable'
+    timescaledb: true

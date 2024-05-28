@@ -1,0 +1,13 @@
+supplierid,suppliername,distance,distanceunit
+S001,Aluminum Engine Blocks Inc,150,km
+S002,Transmissions Unlimited,200,km
+S003,Fuel Systems Ltd,100,km
+S004,Precision Filters Co,180,km
+S005,Advanced Suspension Systems,220,km
+S006,Innovative Infotainment,250,km
+S007,Comfort Seats Corp,130,km
+S008,High Performance Cooling,300,km
+S009,TurboTech Industries,275,km
+S010,Ignition Innovations,160,km
+S011,Electro Wiring Solutions,190,km
+SELF01,Self supplied,0,km

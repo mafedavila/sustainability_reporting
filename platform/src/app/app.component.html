@@ -4,9 +4,9 @@
       <img src="assets/OFFIS_Logo.png" alt="Logo" class="logo">
     </div>
     <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/corporate-carbon-footprint">Corporate Carbon Footprint</a></li>
-      <li><a routerLink="/product-carbon-footprint">Product Carbon Footprint</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
+      <li routerLinkActive="active"><a routerLink="/corporate-carbon-footprint">Corporate Carbon Footprint</a></li>
+      <li routerLinkActive="active"><a routerLink="/product-carbon-footprint">Product Carbon Footprint</a></li>
     </ul>
   </nav>
   <div class="content">

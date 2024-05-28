@@ -1,1618 +1,1618 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": 3,
-    "links": [],
-    "panels": [
+  "annotations": {
+    "list": [
       {
+        "builtIn": 1,
         "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
+          "type": "grafana",
+          "uid": "-- Grafana --"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "masskg"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 0,
-          "y": 0
-        },
-        "id": 4,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "vertical",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "/^Yearly Emissions \\(sum\\)$/",
-            "values": true
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT date_trunc('year', \"month\")::timestamp as \"Year\", \ntotal_emissions as \"Yearly Emissions\" \n\nFROM total_emissions ",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Total Emissions per Year",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "month": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "total_emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "custom": {
-              "align": "center",
-              "cellOptions": {
-                "type": "color-text"
-              },
-              "filterable": true,
-              "inspect": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "kwatth"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Year"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "time:yyyy"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 68
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Energy Source"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 191
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 32,
-          "w": 6,
-          "x": 6,
-          "y": 0
-        },
-        "id": 3,
-        "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "enablePagination": true,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": true
-          },
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT \nf.\"name\" as \"Factory Name\",\ndate_trunc('year', e.\"timestamp\")::timestamp as \"Year\",\ne.\"energy_source\" as \"Energy Source\",\nsum(e.\"energy_used_kWh\") as \"Energy Consumption\"\n\nfrom \"energy_usage\" e\njoin \"factories\" f on e.\"factory_id\" = f.\"factory_id\"\ngroup by e.\"timestamp\", f.\"name\", e.\"energy_source\";",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Energy Consumption by Source",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Energy Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Energy Source": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Factory Name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Yearly Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "factory_name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Factory Name"
-                }
-              ]
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "table"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "custom": {
-              "align": "center",
-              "cellOptions": {
-                "type": "color-text"
-              },
-              "filterable": true,
-              "inspect": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "masskg"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Year"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "time:yyyy"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 71
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Material"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 129
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 32,
-          "w": 6,
-          "x": 12,
-          "y": 0
-        },
-        "id": 5,
-        "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "enablePagination": true,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": true
-          },
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT \nf.\"name\" as \"Factory Name\",\ndate_trunc('year', m.\"timestamp\")::timestamp as \"Year\",\nm.\"material_type\" as \"Material\",\nsum(m.\"quantity_kg\") as \"Material Consumption\"\n\nfrom \"materials\" m\njoin \"factories\" f on m.\"factory_id\" = f.\"factory_id\"\ngroup by m.\"timestamp\", f.\"name\", m.\"material_type\";",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Material Consumption",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Energy Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Energy Source": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Factory Name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Yearly Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "factory_name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Factory Name"
-                }
-              ]
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "table"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "custom": {
-              "align": "center",
-              "cellOptions": {
-                "type": "color-text"
-              },
-              "filterable": true,
-              "inspect": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "litre"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Year"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "time:yyyy"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 71
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Material"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 129
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 11,
-          "w": 6,
-          "x": 18,
-          "y": 0
-        },
-        "id": 6,
-        "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "enablePagination": true,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": true
-          },
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT \ndate_trunc('year', w.\"timestamp\")::timestamp as \"Year\",\nf.\"name\" as \"Factory Name\",\nsum(w.\"water_used_liters\") as \"Water Consumption\"\n\nfrom \"water_usage\" w\njoin \"factories\" f on w.\"factory_id\" = f.\"factory_id\"\ngroup by w.\"timestamp\", f.\"name\";",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Water Consumption",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Energy Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Energy Source": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Factory Name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Water Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Yearly Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "factory_name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Factory Name"
-                }
-              ]
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "table"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "custom": {
-              "align": "center",
-              "cellOptions": {
-                "type": "color-text"
-              },
-              "filterable": true,
-              "inspect": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "masskg"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Year"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "time:yyyy"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 102
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 11,
-          "w": 6,
-          "x": 0,
-          "y": 9
-        },
-        "id": 1,
-        "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "enablePagination": true,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": true
-          },
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\ntotal_emissions as \"Yearly Emissions [kg CO2eq.]\" \n\nFROM total_emissions",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Total Emissions by Factory",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Factory Name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Yearly Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "factory_name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "table"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "custom": {
-              "align": "center",
-              "cellOptions": {
-                "type": "color-text"
-              },
-              "filterable": true,
-              "inspect": true
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "litre"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Year"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "time:yyyy"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 71
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Material"
-              },
-              "properties": [
-                {
-                  "id": "custom.width",
-                  "value": 129
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 11,
-          "w": 6,
-          "x": 18,
-          "y": 11
-        },
-        "id": 7,
-        "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "enablePagination": true,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": true
-          },
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT \ndate_trunc('year', w.\"timestamp\")::timestamp as \"Year\",\nf.\"name\" as \"Factory Name\",\nw.waste_type as \"Waste Type\",\nsum(w.\"amount_kg\") as \"Waste\"\n\nfrom \"waste_management\" w\njoin \"factories\" f on w.\"factory_id\" = f.\"factory_id\"\ngroup by w.\"timestamp\", f.\"name\",w.waste_type;",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Waste Management",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Energy Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Energy Source": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Factory Name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Waste": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Waste Type": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Water Consumption": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Yearly Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "factory_name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Factory Name"
-                }
-              ]
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "table"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "custom": {
-              "align": "center",
-              "cellOptions": {
-                "type": "color-text"
-              },
-              "filterable": true,
-              "inspect": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "masskg"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Year"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "time:yyyy"
-                },
-                {
-                  "id": "custom.width",
-                  "value": 101
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 12,
-          "w": 6,
-          "x": 0,
-          "y": 20
-        },
-        "id": 2,
-        "options": {
-          "cellHeight": "sm",
-          "footer": {
-            "countRows": false,
-            "enablePagination": true,
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": true
-          },
-          "frameIndex": 1,
-          "showHeader": true,
-          "sortBy": []
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\ntotal_material_emissions as \"Material Emissions [kg CO2eq.]\" \n\nFROM material_emissions",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          },
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "hide": false,
-            "rawQuery": true,
-            "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\ntotal_transport_emissions as \"Transport Emissions [kg CO2eq.]\" \n\nFROM transport_emissions",
-            "refId": "B",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          },
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "hide": false,
-            "rawQuery": true,
-            "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\n\"total_energy_emissions_kgCO2\" as \"Energy Emissions [kg CO2eq.]\" \n\nFROM energy_emissions",
-            "refId": "C",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Emissions by Factory with Filter (Material, Transport, Energy)",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Energy Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Factory Name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Material Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Transport Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Yearly Emissions [kg CO2eq.]": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "factory_name": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "table"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "fieldMinMax": false,
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 18,
-          "y": 22
-        },
-        "id": 8,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "vertical",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "/^Produced Products \\(sum\\)$/",
-            "values": true
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT date_trunc('year', \"month\")::timestamp as \"Year\", \nquantity_sold as \"Produced Products\" \n\nFROM products ",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Total Products per Year",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Produced Products": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "month": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "total_emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "grafana-postgresql-datasource",
-          "uid": "P78DC24F8AA21B398"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "fieldMinMax": false,
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "currencyUSD"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 5,
-          "w": 6,
-          "x": 18,
-          "y": 27
-        },
-        "id": 9,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "area",
-          "justifyMode": "center",
-          "orientation": "vertical",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "/^Revenue \\(sum\\)$/",
-            "values": true
-          },
-          "showPercentChange": false,
-          "textMode": "auto",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "grafana-postgresql-datasource",
-              "uid": "P78DC24F8AA21B398"
-            },
-            "editorMode": "code",
-            "format": "table",
-            "rawQuery": true,
-            "rawSql": "SELECT date_trunc('year', \"month\")::timestamp as \"Year\", \nrevenue as \"Revenue\" \n\nFROM products ",
-            "refId": "A",
-            "sql": {
-              "columns": [
-                {
-                  "parameters": [],
-                  "type": "function"
-                }
-              ],
-              "groupBy": [
-                {
-                  "property": {
-                    "type": "string"
-                  },
-                  "type": "groupBy"
-                }
-              ],
-              "limit": 50
-            }
-          }
-        ],
-        "title": "Total Revenue per Year",
-        "transformations": [
-          {
-            "id": "groupBy",
-            "options": {
-              "fields": {
-                "Produced Products": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Revenue": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "Year": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "Yearly Emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                },
-                "month": {
-                  "aggregations": [],
-                  "operation": "groupby"
-                },
-                "total_emissions": {
-                  "aggregations": [
-                    "sum"
-                  ],
-                  "operation": "aggregate"
-                }
-              }
-            }
-          },
-          {
-            "id": "sortBy",
-            "options": {
-              "fields": {},
-              "sort": [
-                {
-                  "field": "Year"
-                }
-              ]
-            }
-          }
-        ],
-        "transparent": true,
-        "type": "stat"
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "refresh": "",
-    "schemaVersion": 39,
-    "tags": [],
-    "templating": {
-      "list": []
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Yearly Emissions \\(sum\\)$/",
+          "values": true
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT date_trunc('year', \"month\")::timestamp as \"Year\", \ntotal_emissions as \"Yearly Emissions\" \n\nFROM total_emissions ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Emissions per Year",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "month": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "total_emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
     },
-    "time": {
-      "from": "2021-01-01T00:00:00.000Z",
-      "to": "2023-12-01T00:00:00.000Z"
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "kwatth"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Year"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "time:yyyy"
+              },
+              {
+                "id": "custom.width",
+                "value": 68
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Energy Source"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 191
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 30,
+        "w": 7,
+        "x": 6,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \nf.\"name\" as \"Factory Name\",\ndate_trunc('year', e.\"timestamp\")::timestamp as \"Year\",\ne.\"energy_source\" as \"Energy Source\",\nsum(e.\"energy_used_kWh\") as \"Energy Consumption\"\n\nfrom \"energy_usage\" e\njoin \"factories\" f on e.\"factory_id\" = f.\"factory_id\"\ngroup by e.\"timestamp\", f.\"name\", e.\"energy_source\";",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Energy Consumption by Source",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Energy Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Energy Source": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Factory Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Yearly Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "factory_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Factory Name"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
     },
-    "timepicker": {},
-    "timezone": "browser",
-    "title": "SustainabilityTables",
-    "uid": "fdmhowh6nwnwgb",
-    "version": 3,
-    "weekStart": ""
-  }
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Year"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "time:yyyy"
+              },
+              {
+                "id": "custom.width",
+                "value": 71
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Material"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 129
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 30,
+        "w": 6,
+        "x": 13,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \nf.\"name\" as \"Factory Name\",\ndate_trunc('year', m.\"timestamp\")::timestamp as \"Year\",\nm.\"material_type\" as \"Material\",\nsum(m.\"quantity_kg\") as \"Material Consumption\"\n\nfrom \"materials\" m\njoin \"factories\" f on m.\"factory_id\" = f.\"factory_id\"\ngroup by m.\"timestamp\", f.\"name\", m.\"material_type\";",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Material Consumption",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Energy Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Energy Source": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Factory Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Yearly Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "factory_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Factory Name"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "litre"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Year"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "time:yyyy"
+              },
+              {
+                "id": "custom.width",
+                "value": 71
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Material"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 129
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 5,
+        "x": 19,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \ndate_trunc('year', w.\"timestamp\")::timestamp as \"Year\",\nf.\"name\" as \"Factory Name\",\nsum(w.\"water_used_liters\") as \"Water Consumption\"\n\nfrom \"water_usage\" w\njoin \"factories\" f on w.\"factory_id\" = f.\"factory_id\"\ngroup by w.\"timestamp\", f.\"name\";",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Water Consumption",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Energy Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Energy Source": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Factory Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Water Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Yearly Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "factory_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Factory Name"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Year"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "time:yyyy"
+              },
+              {
+                "id": "custom.width",
+                "value": 102
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 6,
+        "x": 0,
+        "y": 7
+      },
+      "id": 1,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\ntotal_emissions as \"Yearly Emissions [kg CO2eq.]\" \n\nFROM total_emissions",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Emissions by Factory",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Factory Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Yearly Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "factory_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": true
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "litre"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Year"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "time:yyyy"
+              },
+              {
+                "id": "custom.width",
+                "value": 71
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Material"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 129
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 5,
+        "x": 19,
+        "y": 10
+      },
+      "id": 7,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \ndate_trunc('year', w.\"timestamp\")::timestamp as \"Year\",\nf.\"name\" as \"Factory Name\",\nw.waste_type as \"Waste Type\",\nsum(w.\"amount_kg\") as \"Waste\"\n\nfrom \"waste_management\" w\njoin \"factories\" f on w.\"factory_id\" = f.\"factory_id\"\ngroup by w.\"timestamp\", f.\"name\",w.waste_type;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Waste Management",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Energy Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Energy Source": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Factory Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Waste": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Waste Type": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Water Consumption": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Yearly Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "factory_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Factory Name"
+              }
+            ]
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "masskg"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Year"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "time:yyyy"
+              },
+              {
+                "id": "custom.width",
+                "value": 101
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 6,
+        "x": 0,
+        "y": 18
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": true
+        },
+        "frameIndex": 1,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\ntotal_material_emissions as \"Material Emissions [kg CO2eq.]\" \n\nFROM material_emissions",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\ntotal_transport_emissions as \"Transport Emissions [kg CO2eq.]\" \n\nFROM transport_emissions",
+          "refId": "B",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT \ndate_trunc('year', \"month\")::timestamp as \"Year\", \nfactory_name as \"Factory Name\",\n\"total_energy_emissions_kgCO2\" as \"Energy Emissions [kg CO2eq.]\" \n\nFROM energy_emissions",
+          "refId": "C",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Emissions by Factory with Filter (Material, Transport, Energy)",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Energy Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Factory Name": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Material Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Transport Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Yearly Emissions [kg CO2eq.]": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "factory_name": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 19,
+        "y": 20
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Produced Products \\(sum\\)$/",
+          "values": true
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT date_trunc('year', \"month\")::timestamp as \"Year\", \nquantity_sold as \"Produced Products\" \n\nFROM products ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Products per Year",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Produced Products": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "month": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "total_emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "P78DC24F8AA21B398"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 19,
+        "y": 25
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Revenue \\(sum\\)$/",
+          "values": true
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-postgresql-datasource",
+            "uid": "P78DC24F8AA21B398"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT date_trunc('year', \"month\")::timestamp as \"Year\", \nrevenue as \"Revenue\" \n\nFROM products ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Total Revenue per Year",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Produced Products": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Revenue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Year": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Yearly Emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "month": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "total_emissions": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Year"
+              }
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2021-01-01T00:00:00.000Z",
+    "to": "2023-12-01T00:00:00.000Z"
+  },
+  "timeRangeUpdatedDuringEditOrView": false,
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "SustainabilityTables",
+  "uid": "fdmhowh6nwnwgb",
+  "version": 1,
+  "weekStart": ""
+}

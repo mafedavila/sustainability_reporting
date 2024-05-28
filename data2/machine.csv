@@ -1,0 +1,55 @@
+machineid,machinename,nominalpower,powerunit
+M001,Engine Casting Machine,1500,kW
+M002,Transmission Assembly Station,1000,kW
+M003,Drive Shaft Installation Rig,500,kW
+M004,Axle Mounting Machine,1000,kW
+M005,Steering Installation Station,400,kW
+M006,Radiator Fitting Machine,600,kW
+M007,Electrical Components Station,450,kW
+M008,Fuel System Assembly Line,800,kW
+M009,Exhaust System Station,900,kW
+M010,Filter Replacement Station,250,kW
+M011,Brake Assembly Station,700,kW
+M012,Suspension Assembly Line,1000,kW
+M013,Steering and Bearing Station,600,kW
+M014,Wheel and Tire Assembly Line,1200,kW
+M015,Lighting Installation Station,350,kW
+M016,Window Installation Machine,600,kW
+M017,Dashboard and Infotainment Station,900,kW
+M018,Air Conditioning Unit Assembly,800,kW
+M019,Seating Installation Line,600,kW
+M020,Interior Finishing Station,500,kW
+M021,Console and Panel Assembly,600,kW
+M022,Shifter and Handbrake Installation,300,kW
+M023,Door Mechanism Installation Line,700,kW
+M024,Locking and Key Programming Station,400,kW
+M025,Steering Gear Assembly,550,kW
+M026,Cooling System Assembly Line,600,kW
+M027,Hose and Belt Installation Station,550,kW
+M028,Pulley Installation Machine,400,kW
+M029,Gasket and Seal Replacement Station,300,kW
+M030,Mounting Installation Line,600,kW
+M031,Drive Belt Installation Machine,350,kW
+M032,Timing Chain Installation Station,500,kW
+M033,Camshaft and Crankshaft Assembly,800,kW
+M034,Piston and Rod Assembly Station,650,kW
+M035,Valve and Spring Installation,500,kW
+M036,Timing Belt Installation Machine,400,kW
+M037,Radiator and Coolant Assembly,550,kW
+M038,Fuel Injection and Throttle Assembly,700,kW
+M039,Air Intake Installation Station,600,kW
+M040,Intercooler Installation Machine,750,kW
+M041,Turbocharger Assembly Station,800,kW
+M042,Exhaust Manifold Installation,600,kW
+M043,Intake Manifold Installation,550,kW
+M044,Ignition System Assembly,500,kW
+M045,Distributor Installation Station,400,kW
+M046,Wiper System Installation,350,kW
+M047,Horn Installation Station,250,kW
+M048,Fuse and Relay Assembly Line,300,kW
+M049,Wiring Harness Installation,700,kW
+M050,Antenna Installation Station,300,kW
+M051,Door Seals Installation Line,550,kW
+M052,Sun Visor Installation Station,200,kW
+M053,Roof Lining Installation Machine,500,kW
+M054,Rearview Mirror Installation,250,kW

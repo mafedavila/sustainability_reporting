@@ -1,16 +1,15 @@
-# Stage 1: Build the Angular application
-FROM node:18 as build
+FROM node:18
+
 WORKDIR /usr/src/app
 
-RUN npm install -g @angular/cli
-COPY . .
+COPY package*.json ./
 
 RUN npm install
-RUN ng build
 
-# Stage 2: Serve the application with a lightweight web server
-FROM nginx:alpine
-COPY --from=build /usr/src/app/dist/platform /usr/share/nginx/html
+RUN npm install -g @angular/cli
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY . .
+
+EXPOSE 4200
+
+CMD ["ng", "serve", "--host", "0.0.0.0"]

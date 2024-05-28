@@ -1,6 +1,25 @@
 version: '3.8'
 
 services:
+  timescaledb2:
+    build:
+      context: .
+      dockerfile: ./database2/Dockerfile
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example_password
+    volumes:
+      - db-data2:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+
   timescaledb:
     build:
       context: .
@@ -13,6 +32,9 @@ services:
       POSTGRES_PASSWORD: example_password
     volumes:
       - db-data:/var/lib/postgresql/data
+    depends_on:
+      timescaledb2:
+        condition: service_healthy
     healthcheck:
       test: [ "CMD", "pg_isready", "-U", "postgres" ]
       interval: 10s
@@ -31,6 +53,15 @@ services:
       GF_USERS_DEFAULT_THEME: light
       GF_PATHS_PROVISIONING: /etc/grafana/provisioning
       GF_SECURITY_ALLOW_EMBEDDING: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_NAME: "Main Org."
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Viewer"
+      GF_SERVER_DOMAIN: "localhost"
+      GF_SERVER_ROOT_URL: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+      GF_SECURITY_COOKIE_SAMESITE: "none"
+      GF_SERVER_SERVE_FROM_SUB_PATH: "true"
+      GF_CORS_ALLOWED_ORIGINS: "*"
+      GF_CORS_ALLOW_CREDENTIALS: "true"
     volumes:
       - ./dashboard/provisioning:/etc/grafana/provisioning
       - grafana-data:/var/lib/grafana
@@ -46,15 +77,16 @@ services:
 
   angular:
     build:
-      context: ./website
+      context: ./platform
       dockerfile: Dockerfile
     ports:
-      - "4200:80"
+      - "4200:4200"
     volumes:
-      - ./website:/usr/src/app
+      - ./platform:/usr/src/app
     depends_on:
       - grafana
 
 volumes:
   db-data:
+  db-data2:
   grafana-data:

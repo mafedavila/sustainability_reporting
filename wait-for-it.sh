@@ -11,10 +11,10 @@ shift
 host=$(echo ${hostport} | awk -F: '{print $1}')
 port=$(echo ${hostport} | awk -F: '{print $2}')
 
-# Default timeout is 120 seconds (increase if needed)
+# Default timeout is 120 seconds
 timeout=120
 
-# Default retry interval is 5 seconds (adjust as needed)
+# Default retry interval is 5 seconds
 retry_interval=5
 
 # Default maximum retries

@@ -1,0 +1,193 @@
+processid,productserial,processname,machineid,processminutes
+P001,C2192802,Cast Engine Block,M001,180.0
+P002,C2192802,Assemble Transmission,M002,120.0
+P003,C2192802,Install Drive Shaft,M003,60.0
+P004,C2192802,Install Front Axle,M004,90.0
+P005,C2192802,Install Rear Axle,M004,100.0
+P006,C2192802,Attach Steering Wheel,M005,20.0
+P007,C2192802,Mount Steering Column,M005,30.0
+P008,C2192802,Install Radiator,M006,45.0
+P009,C2192802,Install Battery,M007,15.0
+P010,C2192802,Mount Alternator,M007,30.0
+P011,C2192802,Install Starter Motor,M007,25.0
+P012,C2192802,Fit Fuel Tank,M008,50.0
+P013,C2192802,Install Fuel Pump,M008,40.0
+P014,C2192802,Assemble Exhaust System,M009,80.0
+P015,C2192802,Fit Muffler,M009,30.0
+P016,C2192802,Install Catalytic Converter,M009,25.0
+P017,C2192802,Replace Oil Filter,M010,10.0
+P018,C2192802,Replace Air Filter,M010,10.0
+P019,C2192802,Install Brake Pads,M011,60.0
+P020,C2192802,Install Brake Discs,M011,60.0
+P021,C2192802,Fit Brake Calipers,M011,45.0
+P022,C2192802,Run Brake Lines,M011,70.0
+P023,C2192802,Fit Suspension Springs,M012,90.0
+P024,C2192802,Install Shock Absorbers,M012,60.0
+P025,C2192802,Attach Control Arms,M012,75.0
+P026,C2192802,Install Ball Joints,M013,40.0
+P027,C2192802,Attach Tie Rods,M013,35.0
+P028,C2192802,Fit Wheel Bearings,M013,50.0
+P029,C2192802,Mount Wheels,M014,120.0
+P030,C2192802,Fit Tires,M014,90.0
+P031,C2192802,Install Headlights,M015,40.0
+P032,C2192802,Install Tail Lights,M015,30.0
+P033,C2192802,Attach Side Mirrors,M015,25.0
+P034,C2192802,Install Windshield,M016,60.0
+P035,C2192802,Fit Side Windows,M016,75.0
+P036,C2192802,Install Rear Window,M016,50.0
+P037,C2192802,Fit Dashboard,M017,90.0
+P038,C2192802,Install Infotainment System,M017,70.0
+P039,C2192802,Install Air Conditioning Unit,M018,60.0
+P040,C2192802,Fit Seats,M019,100.0
+P041,C2192802,Install Seat Belts,M019,45.0
+P042,C2192802,Fit Floor Mats,M020,30.0
+P043,C2192802,Install Carpet,M020,50.0
+P044,C2192802,Attach Door Panels,M021,60.0
+P045,C2192802,Fit Glove Compartment,M021,25.0
+P046,C2192802,Install Center Console,M021,40.0
+P047,C2192802,Fit Gear Shifter,M022,25.0
+P048,C2192802,Install Handbrake,M022,20.0
+P049,C2192802,Install Window Mechanism,M023,80.0
+P050,C2192802,Fit Door Handles,M023,30.0
+P051,C2192802,Attach Hinges,M023,45.0
+P052,C2192802,Install Locks,M024,35.0
+P053,C2192802,Program Key Fob,M024,20.0
+P054,C2192802,Install Steering Gear,M025,60.0
+P055,C2192802,Fit Cooling Fan,M026,30.0
+P056,C2192802,Install Fan Shroud,M026,20.0
+P057,C2192802,Run Hoses,M027,60.0
+P058,C2192802,Fit Belts,M027,40.0
+P059,C2192802,Install Pulleys,M028,30.0
+P060,C2192802,Replace Gaskets,M029,20.0
+P061,C2192802,Replace Seals,M029,20.0
+P062,C2192802,Fit Engine Mounts,M030,60.0
+P063,C2192802,Install Transmission Mounts,M030,50.0
+P064,C2192802,Fit Drive Belt,M031,25.0
+P065,C2192802,Install Timing Chain,M032,45.0
+P066,C2192802,Fit Camshaft,M033,70.0
+P067,C2192802,Install Crankshaft,M033,90.0
+P068,C2192802,Fit Pistons,M034,60.0
+P069,C2192802,Attach Connecting Rods,M034,55.0
+P070,C2192802,Install Valve Springs,M035,40.0
+P071,C2192802,Fit Valves,M035,50.0
+P072,C2192802,Install Timing Belt,M036,30.0
+P073,C2192802,Fit Radiator Cap,M037,15.0
+P074,C2192802,Install Coolant Reservoir,M037,25.0
+P075,C2192802,Install Fuel Injector,M038,35.0
+P076,C2192802,Fit Throttle Body,M038,40.0
+P077,C2192802,Install Air Intake,M039,45.0
+P078,C2192802,Fit Intercooler,M040,50.0
+P079,C2192802,Install Turbocharger,M041,70.0
+P080,C2192802,Fit Exhaust Manifold,M042,60.0
+P081,C2192802,Install Intake Manifold,M043,55.0
+P082,C2192802,Install Ignition Coils,M044,35.0
+P083,C2192802,Replace Spark Plugs,M044,20.0
+P084,C2192802,Install Distributor,M045,30.0
+P085,C2192802,Fit Wiper Blades,M046,20.0
+P086,C2192802,Install Wiper Motor,M046,25.0
+P087,C2192802,Attach Wiper Arms,M046,20.0
+P088,C2192802,Install Horn,M047,15.0
+P089,C2192802,Fit Fuse Box,M048,30.0
+P090,C2192802,Install Relays,M048,20.0
+P091,C2192802,Run Wiring Harness,M049,80.0
+P092,C2192802,Install Antenna,M050,20.0
+P093,C2192802,Fit Door Seals,M051,35.0
+P094,C2192802,Install Sun Visors,M052,20.0
+P095,C2192802,Fit Roof Lining,M053,60.0
+P096,C2192802,Install Rearview Mirror,M054,15.0
+Q001,C2176038,Cast Engine Block,M001,202.0
+Q002,C2176038,Assemble Transmission,M002,119.0
+Q003,C2176038,Install Drive Shaft,M003,71.0
+Q004,C2176038,Install Front Axle,M004,91.0
+Q005,C2176038,Install Rear Axle,M004,106.0
+Q006,C2176038,Attach Steering Wheel,M005,26.0
+Q007,C2176038,Mount Steering Column,M005,84.0
+Q008,C2176038,Install Radiator,M006,75.0
+Q009,C2176038,Install Battery,M007,56.0
+Q010,C2176038,Mount Alternator,M007,74.0
+Q011,C2176038,Install Starter Motor,M007,78.0
+Q012,C2176038,Fit Fuel Tank,M008,58.0
+Q013,C2176038,Install Fuel Pump,M008,83.0
+Q014,C2176038,Assemble Exhaust System,M009,112.0
+Q015,C2176038,Fit Muffler,M009,57.0
+Q016,C2176038,Install Catalytic Converter,M009,32.0
+Q017,C2176038,Replace Oil Filter,M010,49.0
+Q018,C2176038,Replace Air Filter,M010,74.0
+Q019,C2176038,Install Brake Pads,M011,81.0
+Q020,C2176038,Install Brake Discs,M011,60.0
+Q021,C2176038,Fit Brake Calipers,M011,110.0
+Q022,C2176038,Run Brake Lines,M011,64.0
+Q023,C2176038,Fit Suspension Springs,M012,46.0
+Q024,C2176038,Install Shock Absorbers,M012,113.0
+Q025,C2176038,Attach Control Arms,M012,78.0
+Q026,C2176038,Install Ball Joints,M013,94.0
+Q027,C2176038,Attach Tie Rods,M013,90.0
+Q028,C2176038,Fit Wheel Bearings,M013,65.0
+Q029,C2176038,Mount Wheels,M014,191.0
+Q030,C2176038,Fit Tires,M014,150.0
+Q031,C2176038,Install Headlights,M015,114.0
+Q032,C2176038,Install Tail Lights,M015,79.0
+Q033,C2176038,Attach Side Mirrors,M015,117.0
+Q034,C2176038,Install Windshield,M016,109.0
+Q035,C2176038,Fit Side Windows,M016,105.0
+Q036,C2176038,Install Rear Window,M016,82.0
+Q037,C2176038,Fit Dashboard,M017,59.0
+Q038,C2176038,Install Infotainment System,M017,113.0
+Q039,C2176038,Install Air Conditioning Unit,M018,112.0
+Q040,C2176038,Fit Seats,M019,109.0
+Q041,C2176038,Install Seat Belts,M019,85.0
+Q042,C2176038,Fit Floor Mats,M020,103.0
+Q043,C2176038,Install Carpet,M020,91.0
+Q044,C2176038,Attach Door Panels,M021,120.0
+Q045,C2176038,Fit Glove Compartment,M021,120.0
+Q046,C2176038,Install Center Console,M021,82.0
+Q047,C2176038,Fit Gear Shifter,M022,53.0
+Q048,C2176038,Install Handbrake,M022,87.0
+Q049,C2176038,Install Window Mechanism,M023,92.0
+Q050,C2176038,Fit Door Handles,M023,104.0
+Q051,C2176038,Attach Hinges,M023,46.0
+Q052,C2176038,Install Locks,M024,79.0
+Q053,C2176038,Program Key Fob,M024,43.0
+Q054,C2176038,Install Steering Gear,M025,72.0
+Q055,C2176038,Fit Cooling Fan,M026,83.0
+Q056,C2176038,Install Fan Shroud,M026,112.0
+Q057,C2176038,Run Hoses,M027,85.0
+Q058,C2176038,Fit Belts,M027,94.0
+Q059,C2176038,Install Pulleys,M028,113.0
+Q060,C2176038,Replace Gaskets,M029,83.0
+Q061,C2176038,Replace Seals,M029,93.0
+Q062,C2176038,Fit Engine Mounts,M030,79.0
+Q063,C2176038,Install Transmission Mounts,M030,84.0
+Q064,C2176038,Fit Drive Belt,M031,85.0
+Q065,C2176038,Install Timing Chain,M032,119.0
+Q066,C2176038,Fit Camshaft,M033,111.0
+Q067,C2176038,Install Crankshaft,M033,49.0
+Q068,C2176038,Fit Pistons,M034,86.0
+Q069,C2176038,Attach Connecting Rods,M034,52.0
+Q070,C2176038,Install Valve Springs,M035,42.0
+Q071,C2176038,Fit Valves,M035,79.0
+Q072,C2176038,Install Timing Belt,M036,72.0
+Q073,C2176038,Fit Radiator Cap,M037,15.0
+Q074,C2176038,Install Coolant Reservoir,M037,51.0
+Q075,C2176038,Install Fuel Injector,M038,110.0
+Q076,C2176038,Fit Throttle Body,M038,43.0
+Q077,C2176038,Install Air Intake,M039,61.0
+Q078,C2176038,Fit Intercooler,M040,75.0
+Q079,C2176038,Install Turbocharger,M041,92.0
+Q080,C2176038,Fit Exhaust Manifold,M042,76.0
+Q081,C2176038,Install Intake Manifold,M043,43.0
+Q082,C2176038,Install Ignition Coils,M044,78.0
+Q083,C2176038,Replace Spark Plugs,M044,24.0
+Q084,C2176038,Install Distributor,M045,98.0
+Q085,C2176038,Fit Wiper Blades,M046,70.0
+Q086,C2176038,Install Wiper Motor,M046,51.0
+Q087,C2176038,Attach Wiper Arms,M046,95.0
+Q088,C2176038,Install Horn,M047,19.0
+Q089,C2176038,Fit Fuse Box,M048,81.0
+Q090,C2176038,Install Relays,M048,75.0
+Q091,C2176038,Run Wiring Harness,M049,82.0
+Q092,C2176038,Install Antenna,M050,60.0
+Q093,C2176038,Fit Door Seals,M051,95.0
+Q094,C2176038,Install Sun Visors,M052,85.0
+Q095,C2176038,Fit Roof Lining,M053,101.0
+Q096,C2176038,Install Rearview Mirror,M054,22.0
