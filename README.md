@@ -10,6 +10,10 @@ After cloning the repository, run on your terminal:
 
 `docker-compose up --build` 
 
+If you are using a Windows machine, use:
+
+`docker compose run angular npm i && docker compose up` 
+
 This should build the images for the database, dashboard and website (platform). 
 
 You can access the website at localhost port 4200.
